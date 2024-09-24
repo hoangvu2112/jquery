@@ -1,0 +1,352 @@
+$primary-color: #4caf50;
+$secondary-color: #0fba7f;
+$gray: #666;
+$light-gray: #f9f9f9;
+$background-gradient: linear-gradient(
+  135deg,
+  rgba(76, 175, 80, 0.5),
+  rgba(255, 255, 255, 0.1)
+);
+@mixin background($white) {
+  background-color: $white;
+}
+
+@mixin fullWidthHeight($percent) {
+  width: $percent;
+  height: $percent;
+}
+
+@mixin form($center) {
+  align-items: $center;
+  justify-content: $center;
+}
+
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: $light-gray;
+}
+
+.hero {
+  @include fullWidthHeight(100%);
+  display: flex;
+  @include form(center);
+  height: 100vh;
+  background-color: $light-gray;
+
+  .container {
+    display: flex;
+    max-width: 1440px;
+    @include fullWidthHeight(100%);
+    box-shadow: 0px 4px 16px $shadow-color;
+    @include background(white);
+    border-radius: 10px;
+
+    .header {
+      width: 55%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 54px;
+
+      .logo {
+        display: flex;
+        @include form(center);
+        padding: 0 40px;
+
+        .logo-box {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+
+          .logo-main {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000000;
+          }
+        }
+
+        .sign-up-box {
+          font-size: 14px;
+
+          a {
+            color: $primary-color;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    // Phần bên trái: chứa form đăng nhập và các nút mạng xã hội
+    .main-content {
+      display: flex;
+      @include form(center);
+      padding: 40px;
+      @include background(white);
+      width: 100%;
+
+      .login-box {
+        max-width: 400px;
+        width: 100%;
+
+        .login-hero {
+          .login-header {
+            text-align: center;
+
+            .welcome-text {
+              font-family: "Poppins", sans-serif;
+              font-size: 36px;
+              font-weight: 600;
+              line-height: 44px;
+              color: #000000;
+              margin-bottom: 20px;
+            }
+
+            .sub-text {
+              font-family: "Poppins", sans-serif;
+              font-size: 18px;
+              font-weight: 400;
+              line-height: 29px;
+              color: #000000;
+              margin-bottom: 37px;
+            }
+          }
+
+          .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+
+            .google-login,
+            .facebook-login {
+              flex: 1;
+              padding: 10px 15px;
+              border-radius: 5px;
+              text-align: center;
+              font-size: 14px;
+              cursor: pointer;
+              border: 1px solid #ddd;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+
+              &.google-login {
+                @include background(white);
+                border: 1px solid $primary-color;
+              }
+
+              &.facebook-login {
+                @include background(white);
+                color: #000000;
+              }
+            }
+          }
+        }
+
+        .divider {
+          position: relative;
+          border-top: 1px solid #dbdbdb;
+          margin: 37px;
+        }
+
+        .divider-text {
+          position: absolute;
+          top: -12px;
+          left: 50%;
+          transform: translateX(-50%);
+          @include background(white);
+          padding: 0 15px;
+          color: #000000;
+        }
+
+        .form-container {
+          .input-box {
+            margin-bottom: 38px;
+            position: relative;
+            input {
+              width: 100%;
+              padding: 20px;
+              border: 1px solid #ddd;
+              border-radius: 10px;
+              font-size: 14px;
+            }
+          }
+
+          .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 35px;
+
+            .switch-hero {
+              display: flex;
+              align-items: center;
+
+              .switch {
+                position: relative;
+                display: inline-block;
+                width: 40px;
+                height: 20px;
+                margin-right: 10px;
+              }
+
+              .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+              }
+
+              .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                @include background(white);
+                transition: 0.4s;
+                border-radius: 34px;
+              }
+
+              .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                @include background(white);
+                transition: 0.4s;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 50%;
+              }
+
+              input:checked + .slider {
+                background-color: #2196f3;
+              }
+
+              input:checked + .slider:before {
+                transform: translate(20px, -50%);
+              }
+            }
+
+            .recover-password a {
+              color: red;
+              text-decoration: none;
+            }
+          }
+
+          .login-button {
+            width: 100%;
+            padding: 12px;
+            @include background(white);
+            color: $gray;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid $gray;
+          }
+          .login-button:hover {
+            background-color: #45a049;
+            color: #f9f9f9;
+          }
+          .input-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 15px;
+          }
+
+          input.input--error {
+            border: 2px solid #ba0808; /* Viền đỏ để báo lỗi */
+          }
+        }
+      }
+    }
+
+    // Phần bên phải: chứa hình ảnh và thông tin
+    .info-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      width: 45%;
+      height: 100%;
+      position: relative;
+      border-radius: 0 10px 10px 0;
+
+      .background-wrapper {
+        height: 100%;
+        width: 100%;
+
+        img.logo-img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      .infor-hero {
+        text-align: center;
+        position: absolute;
+        bottom: 50px;
+        left: 36px;
+        right: 36px;
+        padding: 42px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        align-items: flex-start;
+        background: rgba(255, 242, 242, 0.13);
+
+        .info-header {
+          display: flex;
+          gap: 12px;
+          background: $primary-color;
+          padding: 12px 17px;
+          border-radius: 10px;
+
+          .info-icon {
+            display: flex;
+            gap: 2px;
+          }
+
+          .info-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+          }
+        }
+
+        .info-description {
+          font-family: "Poppins", sans-serif;
+          font-size: 20px;
+          text-align: left;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+
+      .info-box {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,356 @@
+$primary-color: #4caf50;
+$secondary-color: #0fba7f;
+$gray: #666;
+$light-gray: #f9f9f9;
+$background-gradient: linear-gradient(
+  135deg,
+  rgba(76, 175, 80, 0.5),
+  rgba(255, 255, 255, 0.1)
+);
+@mixin background($white) {
+  background-color: $white;
+}
+
+@mixin fullWidthHeight($percent) {
+  width: $percent;
+  height: $percent;
+}
+
+@mixin form($center) {
+  align-items: $center;
+  justify-content: $center;
+}
+
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: $light-gray;
+}
+
+.hero {
+  display: flex;
+  .header {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    display: flex;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 48px 45px;
+
+      .sign-up-box {
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 300;
+
+        a {
+          color: $primary-color;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  // Phần bên trái: chứa form đăng nhập và các nút mạng xã hội
+  .main-content {
+    margin: 0 auto;
+
+    .login-box {
+      max-width: 400px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 55.25px;
+
+      .login-hero {
+        .login-header {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          gap: 3px;
+          .welcome-text {
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+
+            color: #000000;
+          }
+
+          .sub-text {
+            font-family: "Poppins", sans-serif;
+            font-size: 15.04px;
+            font-weight: 400;
+            line-height: 29px;
+            color: #7e7e7e;
+            margin-bottom: 37px;
+          }
+        }
+
+        .social-login {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+
+          .google-login,
+          .facebook-login {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            &.google-login {
+              @include background(white);
+              border: 1px solid $primary-color;
+            }
+
+            &.facebook-login {
+              @include background(white);
+              color: #000000;
+            }
+          }
+        }
+      }
+
+      .divider-text {
+        color: #000000;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+      }
+      .divider-text::before,
+      .divider-text::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ccc; /* The color of the line */
+        margin: 0 10px; /* Spacing between the line and text */
+      }
+
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .input-box {
+          width: 400px;
+          input {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+            font-size: 14px;
+          }
+        }
+
+        .options {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 14px;
+          margin-bottom: 35px;
+
+          .switch-hero {
+            display: flex;
+            align-items: center;
+
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 40px;
+              height: 20px;
+              margin-right: 10px;
+            }
+
+            .switch input {
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              @include background(white);
+              transition: 0.4s;
+              border-radius: 34px;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 16px;
+              width: 16px;
+              @include background(white);
+              transition: 0.4s;
+              top: 50%;
+              transform: translateY(-50%);
+              border-radius: 50%;
+            }
+
+            input:checked + .slider {
+              background-color: #2196f3;
+            }
+
+            input:checked + .slider:before {
+              transform: translate(20px, -50%);
+            }
+          }
+
+          .recover-password a {
+            color: red;
+            text-decoration: none;
+          }
+        }
+
+        .create-button {
+          width: 100%;
+          padding: 12px;
+          background-color: #20dc49;
+          color: #000000;
+          font-size: 14.85px;
+          border-radius: 5px;
+          cursor: pointer;
+          text-align: center;
+          border: 1px solid #666;
+        }
+        .create-button:hover {
+          background-color: #45a049;
+          color: #f9f9f9;
+        }
+        .input-box input {
+          width: 100%;
+
+          border-radius: 5px;
+          border: 1px solid #ddd;
+          margin-bottom: 15px;
+        }
+
+        input.input--error {
+          border: 2px solid #ba0808; /* Viền đỏ để báo lỗi */
+        }
+      }
+    }
+  }
+  .title {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 300;
+    color: #5a5a5a;
+    text-align: center;
+    margin-top: 56.25px;
+  }
+
+  // Phần bên phải: chứa hình ảnh và thông tin
+  .info-box {
+    display: flex;
+    position: relative;
+    border-radius: 0 10px 10px 0;
+    .logo-box {
+      display: flex;
+      gap: 11.27px;
+      align-items: center;
+      position: absolute;
+      top: 40px;
+      left: 58px;
+      .logo-main {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000000;
+      }
+    }
+
+    .background-wrapper {
+      display: flex;
+
+      img.logo-img {
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+
+    .infor-hero {
+      position: absolute;
+      bottom: 50px;
+      left: 36px;
+      top: 315px;
+      padding: 42px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      align-items: flex-start;
+
+      .info-header {
+        display: flex;
+        gap: 10.44px;
+        background: #4caf50;
+        padding: 12px 17px;
+        border-radius: 47.56px;
+        align-items: center;
+
+        .info-icon {
+          display: flex;
+          gap: 2px;
+        }
+
+        .info-title {
+          font-size: 15.29px;
+          font-weight: bold;
+          color: #000000;
+        }
+      }
+      .info-img {
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 242, 242, 0.13);
+        border-radius: 14.32px;
+        width: 246px;
+        .info-icon2 {
+          display: flex;
+          background: #090b0f;
+          padding: 8px 11px 8px 11px;
+          /* margin: 0 auto; */
+          border-radius: 7.16px;
+          width: fit-content;
+        }
+        .info-description {
+          font-family: "Poppins", sans-serif;
+          font-size: 20px;
+
+          color: #ffffff;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+
+      .info-box {
+        display: none;
+      }
+    }
+  }
+}
